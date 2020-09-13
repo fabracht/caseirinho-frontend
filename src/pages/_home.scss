@@ -1,0 +1,40 @@
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+
+  background-image: linear-gradient(
+    to top,
+    rgba(#fad152, 0.8),
+    rgba(#fad152, 0.05)
+  );
+  background-size: auto;
+
+  .button {
+    cursor: pointer;
+    text-decoration: none;
+    background: red;
+    padding: 4rem 4rem;
+    border-radius: 50px;
+    .button-text {
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 2.5rem;
+      text-align: center;
+      color: white;
+    }
+  }
+
+  .home-image {
+    width: 100%;
+    text-align: center;
+    & > img {
+      padding: 2rem 0;
+    }
+  }
+  #home-image-2 {
+    text-align: left;
+    opacity: 0.5;
+  }
+}

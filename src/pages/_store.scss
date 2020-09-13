@@ -1,0 +1,52 @@
+.store-component {
+  position: absolute;
+  top: 45vh;
+  z-index: $z-low1;
+
+  @media (min-width: $bp-small) {
+    top: 50vh;
+  }
+
+  .products-container {
+    background-color: white;
+    .products {
+      height: 100%;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      background-image: linear-gradient(
+        to top,
+        rgba($primary-color-1, 0.9),
+        rgba($primary-color-1, 0)
+      );
+
+      .products-category {
+        padding-bottom: 1rem;
+        &-title {
+          padding: 0 0 1rem 3rem;
+          border-bottom: 2px solid rgba(black, 0.1);
+          color: darken(grey, 10%);
+        }
+      }
+
+      .product-card {
+        color: grey;
+        background-color: white;
+        padding: 1rem;
+        border-radius: 10px;
+        border: 1px solid rgba(black, 0.1);
+        margin: 1rem;
+        justify-content: space-between;
+        display: flex;
+        &-name {
+        }
+        &-description {
+        }
+        &-price {
+          &:before {
+            content: "R$ ";
+          }
+        }
+      }
+    }
+  }
+}

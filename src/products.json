@@ -1,0 +1,123 @@
+{
+  "products": [
+    {
+      "_id": "5f1725cd3f6a3e8d0e9006dd",
+      "title": "Marmita média sexta feira",
+      "description": "Com arroz, feijão, macarrão ao molho e legumes refogados",
+      "price": 15.0,
+      "type": "marmitas"
+    },
+    {
+      "_id": "5f1725cd3f6a3e8d0e9006de",
+      "title": "Marmita mini sexta feira",
+      "description": "Com arroz, feijão, macarrão ao molho e legumes refogados",
+      "price": 13.9,
+      "type": "marmitas"
+    },
+    {
+      "_id": "5f1725cd3f6a3e8d0e9006df",
+      "title": "Marmita só macarrão",
+      "description": " macarrão ao molho vermelho",
+      "price": 7.0,
+      "type": "marmitas"
+    },
+    {
+      "_id": "5f1725cd3f6a3e8d0e9006dg",
+      "title": "Marmita só arroz",
+      "description": "",
+      "price": 5.7,
+      "type": "marmitas"
+    },
+    {
+      "_id": "5f1725cd3f6a3e8d0e9006dh",
+      "title": "Marmita só feijão",
+      "description": "",
+      "price": 10.0,
+      "type": "marmitas"
+    },
+    {
+      "_id": "5f1725cd3f6a3e8d0e9006di",
+      "title": "Só bife acebolado",
+      "description": "Marmita só com bife acebolado",
+      "price": 31.75,
+      "type": "marmitas"
+    },
+    {
+      "_id": "5f1725cd3f6a3e8d0e9006dj",
+      "title": "Marmita média light sexta feira",
+      "description": "Com arroa, feijão, macarrão ao molho e legumes refogados",
+      "price": 15.0,
+      "type": "integral"
+    },
+    {
+      "_id": "5f1725cd3f6a3e8d0e9006dk",
+      "title": "Marmita mini light sexta feira",
+      "description": "Com arroa, feijão, macarrão ao molho e legumes refogados",
+      "price": 15.0,
+      "type": "integral"
+    },
+    {
+      "_id": "5f1725cd3f6a3e8d0e9006dl",
+      "title": "Suco de Laranja",
+      "description": "Natural",
+      "price": 6.5,
+      "type": "bebidas"
+    },
+    {
+      "_id": "5f1725cd3f6a3e8d0e9006dm",
+      "title": "Suco Del Valle",
+      "description": "290ml",
+      "price": 5.0,
+      "type": "bebidas"
+    },
+    {
+      "_id": "5f1725cd3f6a3e8d0e9006dn",
+      "title": "Água mineral",
+      "description": "500ml",
+      "price": 15.0,
+      "type": "bebidas"
+    },
+    {
+      "_id": "5f1725cd3f6a3e8d0e9006do",
+      "title": "Refrigerante 200ml",
+      "description": "200ml",
+      "price": 2.5,
+      "type": "bebidas"
+    },
+    {
+      "_id": "5f1725cd3f6a3e8d0e9006dp",
+      "title": "Refrigerante Lata",
+      "description": "350ml",
+      "price": 5.0,
+      "type": "bebidas"
+    },
+    {
+      "_id": "5f1725cd3f6a3e8d0e9006dq",
+      "title": "Refrigerante 600ml",
+      "description": "600ml",
+      "price": 2.5,
+      "type": "bebidas"
+    },
+    {
+      "_id": "5f1725cd3f6a3e8d0e9006dr",
+      "title": "Refrigerante 1 litro",
+      "description": "1 litro",
+      "price": 8.9,
+      "type": "bebidas"
+    },
+    {
+      "_id": "5f1725cd3f6a3e8d0e9006ds",
+      "title": "Refrigerante 2 litros",
+      "description": "2 litros",
+      "price": 11.5,
+      "type": "bebidas"
+    },
+    {
+      "_id": "5f1725cd3f6a3e8d0e9006dt",
+      "title": "H2O!",
+      "description": "",
+      "price": 5.0,
+      "type": "bebidas"
+    }
+  ]
+}

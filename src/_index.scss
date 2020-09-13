@@ -1,0 +1,48 @@
+$bp-largest: 75em; // 1200px
+$bp-large: 62.5em; // 1000px
+$bp-medium: 50em; // 800px;
+$bp-small: 37.5em; // 600px;
+
+// Z-INDEX
+$z-low3: -30;
+$z-low2: -20;
+$z-low1: -10;
+$z-low: -1;
+$z-medium: 0;
+$z-high: 1;
+$z-high1: 10;
+$z-high2: 20;
+$z-high3: 30;
+
+// COLORS
+$primary-color-1: #fad152;
+
+body {
+  margin: 0;
+  font-family: Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  font-size: 62.5%; // 10px/16px = 62.5% -> 1rem = 10px
+
+  @media only screen and (max-width: $bp-largest) {
+    font-size: 50%;
+  }
+}
+
+code {
+  font-family: Futura, source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+@import "./layout/header";
+@import "./pages/home";
+@import "./pages/store";
+@import "./components/mainButton";
+@import "./App.scss";
