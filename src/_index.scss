@@ -4,15 +4,17 @@ $bp-medium: 50em; // 800px;
 $bp-small: 37.5em; // 600px;
 
 // Z-INDEX
-$z-low3: -30;
-$z-low2: -20;
+$z-low4: -10000;
+$z-low3: -1000;
+$z-low2: -100;
 $z-low1: -10;
 $z-low: -1;
 $z-medium: 0;
 $z-high: 1;
 $z-high1: 10;
-$z-high2: 20;
-$z-high3: 30;
+$z-high2: 100;
+$z-high3: 1000;
+$z-high4: 10000;
 
 // COLORS
 $primary-color-1: #fad152;
@@ -45,4 +47,5 @@ code {
 @import "./pages/home";
 @import "./pages/store";
 @import "./components/mainButton";
+@import "./components/productCard";
 @import "./App.scss";

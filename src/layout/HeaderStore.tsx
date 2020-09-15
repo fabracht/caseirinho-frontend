@@ -2,8 +2,9 @@ import React, { SyntheticEvent } from "react";
 import logo from "../assets/logo-caseirinho.svg";
 import yellowButton from "../assets/beige-brick-button.svg";
 import greyButton from "../assets/grey-brick-button.svg";
-import { MenuChoices, IShoppingCart } from "../types";
+import { MenuChoices, IShoppingCart, IProduct } from "../types";
 import { Store } from "../pages/Store";
+import { products } from "../products.json";
 
 interface Props {}
 interface State {
@@ -11,6 +12,8 @@ interface State {
   posRefs: React.RefObject<HTMLDivElement>[];
   isLoggedIn: boolean;
   shoppingCart: IShoppingCart;
+  searchQuery: string;
+  products: IProduct[];
 }
 
 export class Header extends React.Component<Props, State> {
@@ -23,9 +26,12 @@ export class Header extends React.Component<Props, State> {
       shoppingCart: {
         products: [],
       },
+      products: [],
+      searchQuery: "",
     };
     this.handleMenu = this.handleMenu.bind(this);
     this.shoppingCart = this.shoppingCart.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
   componentDidMount() {
     let pr: React.RefObject<HTMLDivElement>[] = [];
@@ -33,14 +39,34 @@ export class Header extends React.Component<Props, State> {
 
     this.setState({
       posRefs: pr,
+      products: products,
     });
   }
+
+  handleSearch(ev: React.ChangeEvent<HTMLInputElement>) {
+    const query = ev.currentTarget.value;
+    let filteredProducts = this.state.products;
+    this.setState({
+      searchQuery: query,
+    });
+    const splitQuery = query.split(",");
+
+    if (splitQuery.length > 0) {
+      let splitQueryTrim = splitQuery.map((el: string) => el.trim());
+      for (let query of splitQueryTrim) {
+        filteredProducts = products.filter((el: IProduct) =>
+          el.title.toLowerCase().includes(query.toLowerCase())
+        );
+      }
+      this.setState({
+        products: filteredProducts,
+      });
+    }
+  }
+
   buttonGenerator(): JSX.Element[] {
     let buttons: JSX.Element[] = [];
     for (let section of Object.values(MenuChoices)) {
-      console.log(section);
-      console.log(this.state.menuChoice);
-      console.log(this.state.menuChoice === section);
       buttons.push(
         <li key={section} className="subheader-menu-item">
           <input
@@ -131,8 +157,8 @@ export class Header extends React.Component<Props, State> {
                   type="text"
                   id="search"
                   name="search"
+                  onChange={this.handleSearch}
                 />
-
                 <label htmlFor="search"></label>
               </div>
             </div>
@@ -140,7 +166,7 @@ export class Header extends React.Component<Props, State> {
         </div>
 
         <div className="store-component">
-          <Store posRefs={this.state.posRefs} />
+          <Store posRefs={this.state.posRefs} products={this.state.products} />
         </div>
       </div>
     );

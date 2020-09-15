@@ -1,0 +1,60 @@
+{
+  "addons": [
+    {
+      "_id": "5f1725cd3f6a3e8d0e9006dd",
+      "title": "Madioca Frita",
+      "description": "",
+      "price": 1.5,
+      "type": "misturas"
+    },
+    {
+      "_id": "5f1725cd3f6a3e8d0e9006de",
+      "title": "Bife Acebolado",
+      "description": "",
+      "price": 1.39,
+      "type": "misturas"
+    },
+    {
+      "_id": "5f1725cd3f6a3e8d0e9006df",
+      "title": "Carne Moída",
+      "description": "",
+      "price": 7.0,
+      "type": "misturas"
+    },
+    {
+      "_id": "5f1725cd3f6a3e8d0e9006dg",
+      "title": "Torta de Frango",
+      "description": "",
+      "price": 5.7,
+      "type": "misturas"
+    },
+    {
+      "_id": "5f1725cd3f6a3e8d0e9006dh",
+      "title": "Polenta",
+      "description": "",
+      "price": 10.0,
+      "type": "misturas"
+    },
+    {
+      "_id": "5f1725cd3f6a3e8d0e9006di",
+      "title": "Linguiça caseira artesanal",
+      "description": "",
+      "price": 3.15,
+      "type": "misturas"
+    },
+    {
+      "_id": "5f1725cd3f6a3e8d0e9006dj",
+      "title": "Saquinho de Farofa",
+      "description": "Farofa com legumes, farinha de milho e farinha de mandioca",
+      "price": 1.5,
+      "type": "complemento"
+    },
+    {
+      "_id": "5f1725cd3f6a3e8d0e9006dk",
+      "title": "Saquinho de salada",
+      "description": "Alface e tomate",
+      "price": 1.5,
+      "type": "complemento"
+    }
+  ]
+}

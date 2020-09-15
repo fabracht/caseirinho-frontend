@@ -1,21 +1,11 @@
 .header {
-  // background-color: blue;
-  // display: flex;
-  // flex-wrap: wrap;
-  // justify-content: center;
-  // justify-items: center;
-  // text-align: center;
-  position: relative;
-  // height: 100%;
   position: fixed;
   background-color: white;
+  z-index: $z-low;
 }
 .header-container {
   top: 0;
-  // bottom: 100%;
-  // right: 0;
   left: 0;
-  // background-color: rgba(red, 0.7);
   margin: 0;
   padding: 0;
   display: flex;

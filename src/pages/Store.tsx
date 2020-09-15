@@ -1,21 +1,35 @@
-import React, { Component } from "react";
+import React, { Component, SyntheticEvent } from "react";
 import { IProduct, IShoppingCart, MenuChoices } from "../types";
-import { products } from "../products.json";
+import { ProductCard } from "../components/ProductCard";
 
 interface Props {
   menuChoice?: MenuChoices;
   isLoggedIn?: boolean;
   shoppingCart?: IShoppingCart;
   posRefs: React.RefObject<HTMLDivElement>[];
+  products: IProduct[];
 }
-interface State {}
+interface State {
+  selectedProduct: boolean;
+  productId: string | undefined;
+}
 
 export class Store extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      selectedProduct: false,
+      productId: undefined,
+    };
+
+    this.cardToggler = this.cardToggler.bind(this);
+    this.cardGenerator = this.cardGenerator.bind(this);
+  }
   sectionGenerator(products: IProduct[], section?: MenuChoices): JSX.Element {
     let elements: JSX.Element[] = products
       .filter((el: IProduct) => el.type === section)
       .map((product: IProduct) => {
-        return this.cardGenerator(
+        return this.minicardGenerator(
           product._id,
           product.title,
           product.description || "",
@@ -32,7 +46,22 @@ export class Store extends Component<Props, State> {
     );
   }
 
-  cardGenerator(
+  cardToggler(ev: SyntheticEvent<HTMLDivElement>) {
+    const element = ev.currentTarget;
+    this.setState({
+      selectedProduct: true,
+      productId: element.id,
+    });
+  }
+
+  cardGenerator() {
+    const product = this.props.products.filter(
+      (el: IProduct) => el._id === this.state.productId
+    );
+    return <ProductCard {...product[0]} />;
+  }
+
+  minicardGenerator(
     id: string,
     title: string,
     desc: string,
@@ -41,13 +70,18 @@ export class Store extends Component<Props, State> {
     photoUrl: string
   ): JSX.Element {
     return (
-      <div key={id} className="product-card">
-        <div className="product-card-description">
-          <h2 className="product-card-name">{title}</h2>
-          <p className="product-card-description">{desc}</p>
-          <h2 className="product-card-price">{price.toFixed(2)}</h2>
+      <div
+        key={id}
+        id={id}
+        className="product-minicard"
+        onClick={this.cardToggler}
+      >
+        <div className="product-minicard-description">
+          <h2 className="product-minicard-name">{title}</h2>
+          <p className="product-minicard-description">{desc}</p>
+          <h2 className="product-minicard-price">{price.toFixed(2)}</h2>
         </div>
-        <div className="product-card-image">
+        <div className="product-minicard-image">
           <img src={photoUrl} alt="" />
         </div>
       </div>
@@ -55,6 +89,12 @@ export class Store extends Component<Props, State> {
   }
 
   render() {
+    let card: React.ReactElement | undefined;
+    if (this.state.selectedProduct) {
+      card = this.cardGenerator();
+    } else {
+      card = undefined;
+    }
     let prods: JSX.Element[] = [];
     for (let section of Object.values(MenuChoices)) {
       let refIndex = Object.keys(MenuChoices).indexOf(section);
@@ -65,12 +105,17 @@ export class Store extends Component<Props, State> {
             id={section}
             className="products-category"
           >
-            {this.sectionGenerator(products, MenuChoices[section])}
+            {this.sectionGenerator(this.props.products, MenuChoices[section])}
           </div>
         </div>
       );
     }
 
-    return <div className="products-container">{prods}</div>;
+    return (
+      <div className="products-container">
+        {card}
+        {prods}
+      </div>
+    );
   }
 }
