@@ -1,9 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { MainButton } from "./components/MainButton";
-// import ProductCard from "./components/ProductCard";
 import { Header as HeaderHome } from "./layout/HeaderHome";
-import { Header as HeaderStore } from "./layout/HeaderStore";
+import { Store } from "./pages/Store";
 import { Home } from "./pages/Home";
 
 function App() {
@@ -12,7 +10,7 @@ function App() {
       <Router>
         <Switch>
           <Route path="/loja">
-            <HeaderStore />
+            <Store />
           </Route>
           {/* <Route path="/card">
             <ProductCard />
@@ -23,7 +21,6 @@ function App() {
           </Route>
         </Switch>
       </Router>
-      <MainButton />
     </div>
   );
 }

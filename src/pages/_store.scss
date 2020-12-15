@@ -1,7 +1,8 @@
 .store-component {
   position: absolute;
   top: 40vh;
-  z-index: $z-low2;
+  // justify-self: start;
+  z-index: $z-low4;
 
   @media (min-width: $bp-small) {
     top: 50vh;
@@ -29,6 +30,7 @@
       }
 
       .product-minicard {
+        cursor: pointer;
         color: grey;
         background-color: white;
         padding: 1rem;

@@ -3,49 +3,35 @@ import logo from "../assets/logo-caseirinho.svg";
 import yellowButton from "../assets/beige-brick-button.svg";
 import greyButton from "../assets/grey-brick-button.svg";
 import { MenuChoices, IShoppingCart, IProduct } from "../types";
-import { Store } from "../pages/Store";
+
 import { products } from "../products.json";
 
-interface Props {}
+interface Props {
+  posRefs: React.RefObject<HTMLDivElement>[];
+  shoppingCart: IShoppingCart;
+  products: IProduct[];
+  isLoggedIn: boolean;
+}
 interface State {
   menuChoice: MenuChoices;
-  posRefs: React.RefObject<HTMLDivElement>[];
-  isLoggedIn: boolean;
-  shoppingCart: IShoppingCart;
   searchQuery: string;
-  products: IProduct[];
 }
 
-export class Header extends React.Component<Props, State> {
+export class HeaderStore extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
       menuChoice: MenuChoices.marmitas,
-      posRefs: [],
-      isLoggedIn: false,
-      shoppingCart: {
-        products: [],
-      },
-      products: [],
       searchQuery: "",
     };
     this.handleMenu = this.handleMenu.bind(this);
     this.shoppingCart = this.shoppingCart.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
   }
-  componentDidMount() {
-    let pr: React.RefObject<HTMLDivElement>[] = [];
-    Object.keys(MenuChoices).forEach(() => pr.push(React.createRef()));
-
-    this.setState({
-      posRefs: pr,
-      products: products,
-    });
-  }
 
   handleSearch(ev: React.ChangeEvent<HTMLInputElement>) {
     const query = ev.currentTarget.value;
-    let filteredProducts = this.state.products;
+    let filteredProducts = this.props.products;
     this.setState({
       searchQuery: query,
     });
@@ -58,9 +44,9 @@ export class Header extends React.Component<Props, State> {
           el.title.toLowerCase().includes(query.toLowerCase())
         );
       }
-      this.setState({
-        products: filteredProducts,
-      });
+      // this.setState({
+      //   products: filteredProducts,
+      // });
     }
   }
 
@@ -95,7 +81,7 @@ export class Header extends React.Component<Props, State> {
     const target = ev.currentTarget.id;
     let refIndex = Object.keys(MenuChoices).indexOf(target);
 
-    const targetElement = this.state.posRefs[refIndex].current;
+    const targetElement = this.props.posRefs[refIndex].current;
     console.log(targetElement?.offsetTop);
     // let targetElement = document.querySelector(`#${target}`);
 
@@ -122,51 +108,43 @@ export class Header extends React.Component<Props, State> {
 
   shoppingCart(ev: React.MouseEvent<HTMLElement>) {
     // this.sectionGenerator(products);
-    if (!this.state.isLoggedIn) {
+    if (!this.props.isLoggedIn) {
     } else {
     }
   }
 
   render() {
     return (
-      <div className="app-container">
-        <div className="header">
-          <div className="header-container">
-            <a href="/">
-              <div className="header-logo-container">
-                <img src={logo} alt="" className="header-logo" />
-              </div>
-            </a>
-            <div className="subheader">
-              <div className="subheader-title">
-                <i className="fa fa-window-close"></i>
-                <span>Loja aberta até às 18:00</span>
-              </div>
-              <div className="shopping-cart" onClick={this.shoppingCart}>
-                <i className="fa fa-shopping-cart"></i>
-              </div>
-              <div className="subheader-menu">
-                <ul className="subheader-menu-list">
-                  {this.buttonGenerator()}
-                </ul>
-              </div>
-              <div className="subheader-search">
-                <i className="fa fa-search"></i>
-                <input
-                  placeholder="EX: FEIJÃO, MACARRÃO"
-                  type="text"
-                  id="search"
-                  name="search"
-                  onChange={this.handleSearch}
-                />
-                <label htmlFor="search"></label>
-              </div>
+      <div className="header">
+        <div className="header-container">
+          <a href="/">
+            <div className="header-logo-container">
+              <img src={logo} alt="" className="header-logo" />
+            </div>
+          </a>
+          <div className="subheader">
+            <div className="subheader-title">
+              <i className="fa fa-window-close"></i>
+              <span>Loja aberta até às 18:00</span>
+            </div>
+            <div className="shopping-cart" onClick={this.shoppingCart}>
+              <i className="fa fa-shopping-cart"></i>
+            </div>
+            <div className="subheader-menu">
+              <ul className="subheader-menu-list">{this.buttonGenerator()}</ul>
+            </div>
+            <div className="subheader-search">
+              <i className="fa fa-search"></i>
+              <input
+                placeholder="EX: FEIJÃO, MACARRÃO"
+                type="text"
+                id="search"
+                name="search"
+                onChange={this.handleSearch}
+              />
+              <label htmlFor="search"></label>
             </div>
           </div>
-        </div>
-
-        <div className="store-component">
-          <Store posRefs={this.state.posRefs} products={this.state.products} />
         </div>
       </div>
     );

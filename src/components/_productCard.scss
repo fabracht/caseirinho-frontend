@@ -1,14 +1,14 @@
 $input-size: 2rem;
 
 .product-card-container {
-  z-index: $z-high1;
+  z-index: $z-high2;
   position: fixed;
-  top: 0;
-
   display: flex;
   justify-content: flex-end;
   background-color: white;
   width: 100%;
+  height: 60vh;
+  overflow-y: scroll;
   .product-card-header {
     background-color: rgba($primary-color-1, 0.3);
     display: flex;
@@ -63,10 +63,11 @@ $input-size: 2rem;
               display: flex;
               align-items: center;
               justify-content: space-between;
-              text-align: end;
+              text-align: right;
 
               padding: 0 10%;
               &-title {
+                text-align: left;
                 font-size: 1.8rem;
                 font-weight: 700;
               }
